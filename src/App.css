@@ -1,0 +1,21 @@
+.todo-app {
+    max-width: 400px;
+    margin: 20px auto;
+}
+.todo-list {
+    margin: 10px 0;
+    padding: 5px;
+    max-width: 400px;
+    height: 100px;
+    list-style-type: none;
+}
+.todo-list label {
+    cursor: pointer;
+}
+.todo-list li {
+    padding-top: 10px;
+}
+.todo-list .done {
+    text-decoration: line-through;
+    color: grey;
+}
