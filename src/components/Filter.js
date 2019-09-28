@@ -5,13 +5,14 @@ import { Link } from "react-router-dom";
 const style = {
   display: "flex",
   justifyContent: "space-between",
-  marginTop: "20px",
-  maxWidth: "200px"
+  margin: "20px auto 20px auto",
+  textAlign: "center",
+  maxWidth: "300px"
 };
 
 function Filter({ setActiveFilter }) {
   return (
-    <div className={style}>
+    <div style={style}>
       <Link
         onClick={e => {
           setActiveFilter(ALL);
