@@ -30,14 +30,14 @@ p {
 }
 
 .todo-app {
-  max-width: 400px;
+  max-width: 60%;
   margin: 20px auto;
 }
 
 .todo-list {
   margin: 10px 0;
   padding: 5px;
-  max-width: 400px;
+  max-width: 100%;
   list-style-type: none;
   -webkit-box-pack: justify;
       -ms-flex-pack: justify;
@@ -61,11 +61,13 @@ p {
 
 .todo-list li label {
   padding: 5px 0 0 20px;
+  width: 70%;
 }
 
 .todo-list li h2 {
   padding: 12px 0 0 20px;
   font-size: 20px;
+  width: 100%;
 }
 
 .todo-list li p {
@@ -151,7 +153,11 @@ p {
           justify-content: space-between;
 }
 
-.todo-container .delete-button {
+.todo-container .buttons-container {
+  width: 350px;
+}
+
+.todo-container .buttons-container .delete-button {
   width: auto;
   height: 40px;
   color: #fff;
@@ -160,12 +166,19 @@ p {
   margin: 5px 5px 0 5px;
 }
 
-.todo-container .delete-button:hover {
+.todo-container .buttons-container .delete-button:hover {
   border-color: #bd2130;
   background-color: #c82333;
 }
 
-.todo-container .priority-button {
+.todo-container .buttons-container .priority-button {
+  margin-top: 5px;
+  height: 40px;
+  width: 84px;
+  border: 1px solid #a5a3a3;
+}
+
+.todo-container .buttons-container .update-button {
   margin-top: 5px;
   height: 40px;
   width: 84px;
@@ -193,7 +206,7 @@ p {
 }
 
 .form-container select {
-  width: 400px;
+  width: 100%;
   text-align-last: center;
 }
 

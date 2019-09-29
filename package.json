@@ -1,5 +1,5 @@
 {
-  "name": "new",
+  "name": "todolist",
   "version": "1.0.0",
   "description": "",
   "keywords": [],
@@ -24,5 +24,8 @@
     "not dead",
     "not ie <= 11",
     "not op_mini all"
-  ]
+  ],
+  "repository": "https://github.com/Dumnezeu1/todoList-useReducer-useContext",
+  "author": "Dumnezeu1 <alexdumitrescu12@yahoo.com>",
+  "license": "UNLICENSED"
 }

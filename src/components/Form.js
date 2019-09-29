@@ -1,6 +1,7 @@
 import React, { useContext, useRef, useState } from "react";
 import AppContext from "../AppContext";
 import { ADD_TODO } from "../todosReducer";
+import { HIGH, MEDIUM, LOW } from "../useFilter";
 
 function Form() {
   const [todoText, setTodoText] = useState("");
@@ -12,7 +13,11 @@ function Form() {
 
   function clickHandler(e) {
     e.preventDefault();
-    if (todoText.trim().length > 0 && todoDetails.trim().length > 0) {
+    if (
+      todoText.trim().length > 0 &&
+      todoDetails.trim().length > 0 &&
+      taskPriority.trim().length > 0
+    ) {
       todosDispatch({
         type: ADD_TODO,
         todo: {
@@ -47,9 +52,10 @@ function Form() {
       />
       <label>Task Priority:</label>
       <select onChange={e => setTaskPriority(e.target.value)}>
-        <option value="HIGH">HIGH</option>
-        <option value="MEDIUM">MEDIUM</option>
-        <option value="LOW">LOW</option>
+        <option value="">Chose priority level</option>
+        <option value={HIGH}>{HIGH}</option>
+        <option value={MEDIUM}>{MEDIUM}</option>
+        <option value={LOW}>{LOW}</option>
       </select>
 
       <button onClick={clickHandler} type="submit">

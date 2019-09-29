@@ -2,8 +2,9 @@ import React, { useContext, useState } from "react";
 import AppContext from "../AppContext";
 import { TOGGLE_TODO, DELETE_TODO } from "../todosReducer";
 import { filterTodos } from "../useFilter";
+import { HIGH, MEDIUM, LOW } from "../useFilter";
 
-function TodoListItem({ todo, onChangeTodo, onDeleteTodo }) {
+function TodoListItem({ todo, onChangeTodo, onDeleteTodo, onUpdateTodo }) {
   return (
     <li>
       <div className="todo-container">
@@ -12,10 +13,13 @@ function TodoListItem({ todo, onChangeTodo, onDeleteTodo }) {
           <input checked={todo.done} onChange={onChangeTodo} type="checkbox" />
           <span className="checkmark"></span>
         </label>
-        <div>
+        <div className="buttons-container">
           <button className="priority-button">{todo.priority}</button>
           <button onClick={onDeleteTodo} className="delete-button">
             Delete
+          </button>
+          <button onClick={onUpdateTodo} className="update-button">
+            Update
           </button>
         </div>
       </div>
@@ -57,10 +61,34 @@ function TodoList({ filter }) {
     textAlign: "center"
   };
 
-  let filterTodo = todosToDisplay.filter(todo => {
-    return todo.text.toLowerCase().indexOf(search) !== -1;
+  const simpleSort = Array.from(todosToDisplay).sort((a, b) => {
+    const one = a.priority;
+    const two = b.priority;
+    if (
+      (one === HIGH && two === MEDIUM) ||
+      (one === HIGH && two === LOW) ||
+      (one === MEDIUM && two === LOW)
+    ) {
+      return -1;
+    }
+    if (
+      (one === MEDIUM && two === HIGH) ||
+      (one === LOW && two === MEDIUM) ||
+      (one === LOW && two === HIGH)
+    ) {
+      return 1;
+    }
+
+    return 0;
   });
-  console.table(filterTodo);
+
+  let filterTodo = simpleSort.filter(todo => {
+    return todo.text.toLowerCase().indexOf(search.toLocaleLowerCase()) !== -1;
+  });
+
+  function onUpdateTodo(index) {
+    console.log(index);
+  }
 
   return (
     <>
@@ -76,6 +104,7 @@ function TodoList({ filter }) {
               onDeleteTodo={() =>
                 todosDispatch({ type: DELETE_TODO, todoIndex: todo.idTodo })
               }
+              onUpdateTodo={() => onUpdateTodo(todo.idTodo)}
               todo={todo}
             />
           ))}

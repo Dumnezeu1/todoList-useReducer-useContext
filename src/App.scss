@@ -36,13 +36,13 @@ p {
 }
 
 .todo-app {
-  max-width: 400px;
+  max-width: 60%;
   margin: 20px auto;
 }
 .todo-list {
   margin: 10px 0;
   padding: 5px;
-  max-width: 400px;
+  max-width: 100%;
   list-style-type: none;
   justify-content: space-between;
   label {
@@ -54,10 +54,12 @@ p {
     padding-top: 10px;
     label {
       padding: 5px 0 0 20px;
+      width: 70%;
     }
     h2 {
       padding: 12px 0 0 20px;
       font-size: 20px;
+      width: 100%;
     }
     p {
       margin: 5px 0 0 40px;
@@ -135,23 +137,32 @@ p {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-  .delete-button {
-    width: auto;
-    height: 40px;
-    color: #fff;
-    background-color: $delete-color;
-    border-color: $delete-color;
-    margin: 5px 5px 0 5px;
-    &:hover {
-      border-color: $delete-border-color-hover;
-      background-color: $delete-color-hover;
+  .buttons-container {
+    width: 350px;
+    .delete-button {
+      width: auto;
+      height: 40px;
+      color: #fff;
+      background-color: $delete-color;
+      border-color: $delete-color;
+      margin: 5px 5px 0 5px;
+      &:hover {
+        border-color: $delete-border-color-hover;
+        background-color: $delete-color-hover;
+      }
     }
-  }
-  .priority-button {
-    margin-top: 5px;
-    height: 40px;
-    width: 84px;
-    border: 1px solid rgb(165, 163, 163);
+    .priority-button {
+      margin-top: 5px;
+      height: 40px;
+      width: 84px;
+      border: 1px solid rgb(165, 163, 163);
+    }
+    .update-button {
+      margin-top: 5px;
+      height: 40px;
+      width: 84px;
+      border: 1px solid rgb(165, 163, 163);
+    }
   }
 }
 
@@ -166,7 +177,7 @@ p {
     padding: 10px 0;
   }
   select {
-    width: 400px;
+    width: 100%;
     text-align-last: center;
   }
 
