@@ -154,7 +154,8 @@ p {
 }
 
 .todo-container .buttons-container {
-  width: 350px;
+  padding-left: 10px;
+  border-left: 1px solid #a5a3a3;
 }
 
 .todo-container .buttons-container .delete-button {

@@ -4,7 +4,7 @@ import { TOGGLE_TODO, DELETE_TODO } from "../todosReducer";
 import { filterTodos } from "../useFilter";
 import { HIGH, MEDIUM, LOW } from "../useFilter";
 
-function TodoListItem({ todo, onChangeTodo, onDeleteTodo, onUpdateTodo }) {
+function TodoListItem({ todo, onChangeTodo, onDeleteTodo }) {
   return (
     <li>
       <div className="todo-container">
@@ -17,9 +17,6 @@ function TodoListItem({ todo, onChangeTodo, onDeleteTodo, onUpdateTodo }) {
           <button className="priority-button">{todo.priority}</button>
           <button onClick={onDeleteTodo} className="delete-button">
             Delete
-          </button>
-          <button onClick={onUpdateTodo} className="update-button">
-            Update
           </button>
         </div>
       </div>
@@ -86,10 +83,6 @@ function TodoList({ filter }) {
     return todo.text.toLowerCase().indexOf(search.toLocaleLowerCase()) !== -1;
   });
 
-  function onUpdateTodo(index) {
-    console.log(index);
-  }
-
   return (
     <>
       <SearchTodo setSearch={setSearch} />
@@ -104,7 +97,6 @@ function TodoList({ filter }) {
               onDeleteTodo={() =>
                 todosDispatch({ type: DELETE_TODO, todoIndex: todo.idTodo })
               }
-              onUpdateTodo={() => onUpdateTodo(todo.idTodo)}
               todo={todo}
             />
           ))}

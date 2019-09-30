@@ -138,7 +138,8 @@ p {
   flex-direction: row;
   justify-content: space-between;
   .buttons-container {
-    width: 350px;
+    padding-left: 10px;
+    border-left: 1px solid #a5a3a3;
     .delete-button {
       width: auto;
       height: 40px;
