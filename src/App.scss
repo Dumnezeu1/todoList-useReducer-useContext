@@ -51,7 +51,7 @@ p {
     flex-direction: row;
   }
   li {
-    padding-top: 10px;
+    padding: 10px;
     label {
       padding: 5px 0 0 20px;
       width: 70%;
@@ -140,6 +140,7 @@ p {
   .buttons-container {
     padding-left: 10px;
     border-left: 1px solid #a5a3a3;
+    width: 290px;
     .delete-button {
       width: auto;
       height: 40px;
@@ -191,5 +192,22 @@ p {
       background-color: $succes-color-hover;
       border-color: $succes-border-color-hover;
     }
+  }
+}
+
+.update-container {
+  width: 100%;
+  text-align: center;
+
+  label {
+    width: 100%;
+  }
+  input {
+    width: 100%;
+    text-align: center;
+    margin-top: 10px;
+  }
+  button {
+    margin-top: 20px;
   }
 }

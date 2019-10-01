@@ -56,7 +56,7 @@ p {
 }
 
 .todo-list li {
-  padding-top: 10px;
+  padding: 10px;
 }
 
 .todo-list li label {
@@ -156,6 +156,7 @@ p {
 .todo-container .buttons-container {
   padding-left: 10px;
   border-left: 1px solid #a5a3a3;
+  width: 290px;
 }
 
 .todo-container .buttons-container .delete-button {
@@ -221,5 +222,24 @@ p {
 .form-container button:hover {
   background-color: #218838;
   border-color: #1e7e34;
+}
+
+.update-container {
+  width: 100%;
+  text-align: center;
+}
+
+.update-container label {
+  width: 100%;
+}
+
+.update-container input {
+  width: 100%;
+  text-align: center;
+  margin-top: 10px;
+}
+
+.update-container button {
+  margin-top: 20px;
 }
 /*# sourceMappingURL=App.css.map */

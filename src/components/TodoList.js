@@ -1,10 +1,17 @@
 import React, { useContext, useState } from "react";
 import AppContext from "../AppContext";
-import { TOGGLE_TODO, DELETE_TODO } from "../todosReducer";
+import { TOGGLE_TODO, DELETE_TODO, UPDATE_TODO } from "../todosReducer";
 import { filterTodos } from "../useFilter";
 import { HIGH, MEDIUM, LOW } from "../useFilter";
 
-function TodoListItem({ todo, onChangeTodo, onDeleteTodo }) {
+function TodoListItem({
+  todo,
+  onChangeTodo,
+  onDeleteTodo,
+  setIdUpdate,
+  setUpdateDescription,
+  setUpdateText
+}) {
   return (
     <li>
       <div className="todo-container">
@@ -15,6 +22,17 @@ function TodoListItem({ todo, onChangeTodo, onDeleteTodo }) {
         </label>
         <div className="buttons-container">
           <button className="priority-button">{todo.priority}</button>
+
+          <button
+            onClick={() => {
+              setIdUpdate(todo.idTodo);
+              setUpdateText(todo.text);
+              setUpdateDescription(todo.description);
+            }}
+            className="update-button"
+          >
+            Update
+          </button>
           <button onClick={onDeleteTodo} className="delete-button">
             Delete
           </button>
@@ -53,6 +71,11 @@ function TodoList({ filter }) {
   const todosToDisplay = filterTodos(todos, filter);
   const [search, setSearch] = useState("");
 
+  const [idUpdate, setIdUpdate] = useState(0);
+  const [updateDescription, setUpdateDescription] = useState("");
+  const [updateText, setUpdateText] = useState("");
+  console.log(idUpdate);
+
   const notFoundStyle = {
     paddingTop: "30px",
     textAlign: "center"
@@ -86,6 +109,45 @@ function TodoList({ filter }) {
   return (
     <>
       <SearchTodo setSearch={setSearch} />
+      {idUpdate !== 0 && (
+        <form className="update-container">
+          <br />
+          <label>Update Task: {updateText} </label>
+          <br />
+          <input
+            onChange={e => setUpdateText(e.target.value)}
+            value={updateText}
+          />
+          <br />
+          <input
+            onChange={e => setUpdateDescription(e.target.value)}
+            value={updateDescription}
+          />
+          <br />
+          <button
+            onClick={e => {
+              e.preventDefault();
+              todosDispatch({
+                type: UPDATE_TODO,
+                todoIndex: idUpdate,
+                editText: updateText,
+                editDescription: updateDescription
+              });
+              setIdUpdate(0);
+            }}
+          >
+            Update
+          </button>
+          <button
+            onClick={e => {
+              e.preventDefault();
+              setIdUpdate(0);
+            }}
+          >
+            Cancel
+          </button>
+        </form>
+      )}
       {filterTodo.length !== 0 ? (
         <ul className="todo-list">
           {filterTodo.map(todo => (
@@ -98,6 +160,10 @@ function TodoList({ filter }) {
                 todosDispatch({ type: DELETE_TODO, todoIndex: todo.idTodo })
               }
               todo={todo}
+              updateDescription={updateDescription}
+              setUpdateDescription={setUpdateDescription}
+              setIdUpdate={setIdUpdate}
+              setUpdateText={setUpdateText}
             />
           ))}
         </ul>
