@@ -156,7 +156,7 @@ p {
 .todo-container .buttons-container {
   padding-left: 10px;
   border-left: 1px solid #a5a3a3;
-  width: 290px;
+  width: 350px;
 }
 
 .todo-container .buttons-container .delete-button {
@@ -165,7 +165,7 @@ p {
   color: #fff;
   background-color: #dc3545;
   border-color: #dc3545;
-  margin: 5px 5px 0 5px;
+  margin-top: 5px;
 }
 
 .todo-container .buttons-container .delete-button:hover {
@@ -181,7 +181,7 @@ p {
 }
 
 .todo-container .buttons-container .update-button {
-  margin-top: 5px;
+  margin: 5px 5px 0 5px;
   height: 40px;
   width: 84px;
   border: 1px solid #a5a3a3;

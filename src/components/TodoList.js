@@ -74,7 +74,7 @@ function TodoList({ filter }) {
   const [idUpdate, setIdUpdate] = useState(0);
   const [updateDescription, setUpdateDescription] = useState("");
   const [updateText, setUpdateText] = useState("");
-  console.log(idUpdate);
+  const [taskPriorityUpdate, setTaskPriorityUpdate] = useState("");
 
   const notFoundStyle = {
     paddingTop: "30px",
@@ -124,6 +124,15 @@ function TodoList({ filter }) {
             value={updateDescription}
           />
           <br />
+          <br />
+          <label>Task Priority:</label>
+          <select onChange={e => setTaskPriorityUpdate(e.target.value)}>
+            <option value="">Chose priority level</option>
+            <option value={HIGH}>{HIGH}</option>
+            <option value={MEDIUM}>{MEDIUM}</option>
+            <option value={LOW}>{LOW}</option>
+          </select>
+          <br />
           <button
             onClick={e => {
               e.preventDefault();
@@ -131,7 +140,8 @@ function TodoList({ filter }) {
                 type: UPDATE_TODO,
                 todoIndex: idUpdate,
                 editText: updateText,
-                editDescription: updateDescription
+                editDescription: updateDescription,
+                editPrioritiy: taskPriorityUpdate
               });
               setIdUpdate(0);
             }}

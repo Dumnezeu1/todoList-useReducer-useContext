@@ -5,14 +5,13 @@ export const DELETE_TODO = "delete_todo";
 export const UPDATE_TODO = "update_todo";
 
 export default function todosReducer(state, action) {
-  console.log(state);
-
   const todoIndex = [...state].findIndex(
     todo => todo.idTodo === action.todoIndex
   );
 
   const updateText = action.editText;
   const updateDescription = action.editDescription;
+  const updatePrioritiy = action.editPrioritiy;
 
   switch (action.type) {
     case TOGGLE_TODO:
@@ -32,7 +31,8 @@ export default function todosReducer(state, action) {
         {
           ...state[todoIndex],
           text: updateText,
-          description: updateDescription
+          description: updateDescription,
+          priority: updatePrioritiy
         },
         ...state.slice(todoIndex + 1, state.length)
       ];

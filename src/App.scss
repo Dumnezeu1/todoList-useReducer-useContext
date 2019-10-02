@@ -140,14 +140,14 @@ p {
   .buttons-container {
     padding-left: 10px;
     border-left: 1px solid #a5a3a3;
-    width: 290px;
+    width: 350px;
     .delete-button {
       width: auto;
       height: 40px;
       color: #fff;
       background-color: $delete-color;
       border-color: $delete-color;
-      margin: 5px 5px 0 5px;
+      margin-top: 5px;
       &:hover {
         border-color: $delete-border-color-hover;
         background-color: $delete-color-hover;
@@ -160,7 +160,7 @@ p {
       border: 1px solid rgb(165, 163, 163);
     }
     .update-button {
-      margin-top: 5px;
+      margin: 5px 5px 0 5px;
       height: 40px;
       width: 84px;
       border: 1px solid rgb(165, 163, 163);
