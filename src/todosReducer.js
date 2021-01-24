@@ -6,7 +6,7 @@ export const UPDATE_TODO = "update_todo";
 
 export default function todosReducer(state, action) {
   const todoIndex = [...state].findIndex(
-    (todo) => todo.idTodo === action.todoIndex
+    todo => todo.idTodo === action.todoIndex
   );
 
   const updateText = action.editText;
@@ -18,7 +18,7 @@ export default function todosReducer(state, action) {
       return [
         ...state.slice(0, todoIndex),
         { ...state[todoIndex], done: !state[todoIndex].done },
-        ...state.slice(todoIndex + 1, state.length),
+        ...state.slice(todoIndex + 1, state.length)
       ];
     case ADD_TODO:
       return [...state, action.todo];
@@ -32,9 +32,9 @@ export default function todosReducer(state, action) {
           ...state[todoIndex],
           text: updateText,
           description: updateDescription,
-          priority: updatePrioritiy,
+          priority: updatePrioritiy
         },
-        ...state.slice(todoIndex + 1, state.length),
+        ...state.slice(todoIndex + 1, state.length)
       ];
     default:
       return state;

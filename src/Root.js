@@ -1,12 +1,12 @@
 import React from "react";
-import Home from "../home";
+import App from "./App";
 import { BrowserRouter as Router, Route } from "react-router-dom";
 
 function Root() {
   return (
     <Router>
       <>
-        <Route path={`/:filter?`} component={Home} />
+        <Route path={`/:filter?`} component={App} />
       </>
     </Router>
   );

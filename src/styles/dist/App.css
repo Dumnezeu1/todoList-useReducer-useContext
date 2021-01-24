@@ -1,0 +1,222 @@
+* {
+  font-family: "Courier New", Courier, monospace;
+}
+
+button {
+  display: inline-block;
+  font-weight: 400;
+  text-align: center;
+  white-space: nowrap;
+  vertical-align: middle;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  border: 1px solid transparent;
+  padding: 0.375rem 0.75rem;
+  font-size: 1rem;
+  line-height: 1.5;
+  border-radius: 0.25rem;
+  transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+}
+
+h2,
+p {
+  margin: 0;
+  padding: 0;
+}
+
+.todo-app {
+  max-width: 60%;
+  margin: 20px auto;
+}
+
+.todo-list {
+  margin: 10px 0;
+  padding: 5px;
+  max-width: 100%;
+  list-style-type: none;
+  justify-content: space-between;
+}
+.todo-list label {
+  cursor: pointer;
+  display: flex;
+  flex-direction: row;
+}
+.todo-list li {
+  padding: 10px;
+}
+.todo-list li label {
+  padding: 5px 0 0 20px;
+  width: 70%;
+}
+.todo-list li h2 {
+  padding: 12px 0 0 20px;
+  font-size: 20px;
+  width: 100%;
+}
+.todo-list li p {
+  margin: 5px 0 0 40px;
+}
+
+.todo-list .done {
+  text-decoration: line-through;
+  color: grey;
+}
+
+.container {
+  display: block;
+  position: relative;
+  padding-left: 35px;
+  margin-bottom: 12px;
+  cursor: pointer;
+  font-size: 22px;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+.container input {
+  position: absolute;
+  opacity: 0;
+  cursor: pointer;
+  height: 0;
+  width: 0;
+}
+
+.checkmark {
+  position: absolute;
+  margin-top: 15px;
+  border: 1px solid #cfcaca;
+  top: 0;
+  left: 0;
+  height: 25px;
+  width: 25px;
+  background-color: #eee;
+  border-radius: 50px;
+}
+
+.container:hover input ~ .checkmark {
+  background-color: #ccc;
+}
+
+.container input:checked ~ .checkmark {
+  background-color: #2196f3;
+}
+
+.checkmark:after {
+  content: "";
+  position: absolute;
+  display: none;
+}
+
+.container input:checked ~ .checkmark:after {
+  display: block;
+}
+
+.container .checkmark:after {
+  left: 9px;
+  top: 5px;
+  width: 5px;
+  height: 10px;
+  border: solid white;
+  border-width: 0 3px 3px 0;
+  -webkit-transform: rotate(45deg);
+  -ms-transform: rotate(45deg);
+  transform: rotate(45deg);
+}
+
+.todo-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+.todo-container .buttons-container {
+  padding-left: 10px;
+  border-left: 1px solid #a5a3a3;
+  width: 350px;
+  justify-content: space-between;
+}
+.todo-container .buttons-container .delete-button {
+  width: auto;
+  height: 40px;
+  color: #fff;
+  background-color: #dc3545;
+  border-color: #dc3545;
+  margin-top: 5px;
+}
+.todo-container .buttons-container .delete-button:hover {
+  border-color: #bd2130;
+  background-color: #c82333;
+}
+.todo-container .buttons-container .priority-button {
+  margin-top: 5px;
+  height: 40px;
+  width: 84px;
+  border: 1px solid #a5a3a3;
+}
+.todo-container .buttons-container .update-button {
+  margin: 5px 5px 0 5px;
+  height: 40px;
+  width: 84px;
+  border: 1px solid #a5a3a3;
+}
+
+.form-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 100%;
+  margin: 0 auto 0 auto;
+  text-align: center;
+}
+.form-container label {
+  padding: 10px 0;
+}
+.form-container select {
+  width: 100%;
+  text-align-last: center;
+}
+.form-container button {
+  margin-top: 10px;
+  color: #fff;
+  background-color: #28a745;
+  border-color: #28a745;
+}
+.form-container button:hover {
+  background-color: #218838;
+  border-color: #1e7e34;
+}
+
+.update-container {
+  width: 100%;
+  text-align: center;
+  margin: 40px 0;
+}
+.update-container label {
+  width: 100%;
+}
+.update-container input {
+  width: 100%;
+  text-align: center;
+  margin-top: 10px;
+}
+.update-container button {
+  margin-top: 20px;
+}
+
+.filter_todo {
+  display: flex;
+  justify-content: space-between;
+  margin: 20px auto 20px auto;
+  text-align: center;
+  max-width: 300px;
+  border: 1px solid black;
+  padding: 15px 30px;
+  border-radius: 20px;
+}
+.filter_todo a {
+  text-decoration: none;
+  color: black;
+  font-size: 20px;
+}

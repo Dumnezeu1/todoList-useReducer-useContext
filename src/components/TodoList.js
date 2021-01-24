@@ -1,8 +1,10 @@
 import React, { useContext, useState } from "react";
-import AppContext from "../context/AppContext";
-import { TOGGLE_TODO, DELETE_TODO, UPDATE_TODO } from "../context/todosReducer";
+import AppContext from "../AppContext";
+import { TOGGLE_TODO, DELETE_TODO, UPDATE_TODO } from "../todosReducer";
 import { filterTodos } from "../useFilter";
 import { HIGH, MEDIUM, LOW } from "../useFilter";
+
+import UpdateTodo from "./UpdateTodo";
 
 function TodoListItem({
   todo,
@@ -16,9 +18,18 @@ function TodoListItem({
     <li>
       <div className="todo-container">
         <label className="container">
-          <h2 className={todo.done ? "done" : ""}> {todo.text}</h2>
-          <input checked={todo.done} onChange={onChangeTodo} type="checkbox" />
-          <span className="checkmark"></span>
+          <div>
+            <input
+              checked={todo.done}
+              onChange={onChangeTodo}
+              type="checkbox"
+            />
+            <span className="checkmark"></span>
+          </div>
+          <div style={{ marginLeft: 20 }}>
+            <h2 className={todo.done ? "done" : ""}> {todo.text}</h2>
+            <p className={todo.done ? "done" : ""}> {todo.description}</p>
+          </div>
         </label>
         <div className="buttons-container">
           <button className="priority-button">{todo.priority}</button>
@@ -38,7 +49,6 @@ function TodoListItem({
           </button>
         </div>
       </div>
-      <p className={todo.done ? "done" : ""}> {todo.description}</p>
     </li>
   );
 }
@@ -74,7 +84,6 @@ function TodoList({ filter }) {
   const [idUpdate, setIdUpdate] = useState(0);
   const [updateDescription, setUpdateDescription] = useState("");
   const [updateText, setUpdateText] = useState("");
-  const [taskPriorityUpdate, setTaskPriorityUpdate] = useState("");
 
   const notFoundStyle = {
     paddingTop: "30px",
@@ -109,55 +118,14 @@ function TodoList({ filter }) {
   return (
     <>
       <SearchTodo setSearch={setSearch} />
-      {idUpdate !== 0 && (
-        <form className="update-container">
-          <br />
-          <label>Update Task: {updateText} </label>
-          <br />
-          <input
-            onChange={(e) => setUpdateText(e.target.value)}
-            value={updateText}
-          />
-          <br />
-          <input
-            onChange={(e) => setUpdateDescription(e.target.value)}
-            value={updateDescription}
-          />
-          <br />
-          <br />
-          <label>Task Priority:</label>
-          <select onChange={(e) => setTaskPriorityUpdate(e.target.value)}>
-            <option value="">Chose priority level</option>
-            <option value={HIGH}>{HIGH}</option>
-            <option value={MEDIUM}>{MEDIUM}</option>
-            <option value={LOW}>{LOW}</option>
-          </select>
-          <br />
-          <button
-            onClick={(e) => {
-              e.preventDefault();
-              todosDispatch({
-                type: UPDATE_TODO,
-                todoIndex: idUpdate,
-                editText: updateText,
-                editDescription: updateDescription,
-                editPrioritiy: taskPriorityUpdate,
-              });
-              setIdUpdate(0);
-            }}
-          >
-            Update
-          </button>
-          <button
-            onClick={(e) => {
-              e.preventDefault();
-              setIdUpdate(0);
-            }}
-          >
-            Cancel
-          </button>
-        </form>
-      )}
+      <UpdateTodo
+        updateText={updateText}
+        setUpdateText={setUpdateText}
+        updateDescription={updateDescription}
+        setUpdateDescription={setUpdateDescription}
+        idUpdate={idUpdate}
+        setIdUpdate={setIdUpdate}
+      />
       {filterTodo.length !== 0 ? (
         <ul className="todo-list">
           {filterTodo.map((todo) => (

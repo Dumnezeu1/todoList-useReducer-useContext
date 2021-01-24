@@ -2,17 +2,9 @@ import React from "react";
 import { ALL, DONE, TODO } from "../useFilter";
 import { Link } from "react-router-dom";
 
-const style = {
-  display: "flex",
-  justifyContent: "space-between",
-  margin: "20px auto 20px auto",
-  textAlign: "center",
-  maxWidth: "300px",
-};
-
 function Filter({ setActiveFilter }) {
   return (
-    <div style={style}>
+    <div className="filter_todo">
       <Link
         onClick={(e) => {
           setActiveFilter(ALL);

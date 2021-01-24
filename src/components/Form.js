@@ -1,6 +1,6 @@
 import React, { useContext, useRef, useState } from "react";
-import AppContext from "../context/AppContext";
-import { ADD_TODO } from "../context/todosReducer";
+import AppContext from "../AppContext";
+import { ADD_TODO } from "../todosReducer";
 import { HIGH, MEDIUM, LOW } from "../useFilter";
 
 function Form() {
