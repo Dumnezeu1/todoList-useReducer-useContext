@@ -1,6 +1,6 @@
 import React, { useContext, useState } from "react";
 import AppContext from "../AppContext";
-import { TOGGLE_TODO, DELETE_TODO, UPDATE_TODO } from "../todosReducer";
+import { TOGGLE_TODO, DELETE_TODO } from "../todosReducer";
 import { filterTodos } from "../useFilter";
 import { HIGH, MEDIUM, LOW } from "../useFilter";
 
